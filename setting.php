@@ -52,7 +52,7 @@ if(!empty($_POST['tmbupdate'])){
         }else{
             $upassword="";
         }
-        $sql="UPDATE  `twitterlike`.`user` SET  fullname='$namalengkap',bio='$bio',email='$email' $ufoto $upassword WHERE  `user`.`username` =  '$username';";
+        $sql="UPDATE  `user` SET  fullname='$namalengkap',bio='$bio',email='$email' $ufoto $upassword WHERE  `user`.`username` =  '$username';";
         $hasil=mysql_query($sql);
         if (!$hasil) {
             $pesan  = 'Invalid query: ' . mysql_error() . "\n";
@@ -96,7 +96,7 @@ $info=$info[0];
                     <h1>Setting</h1>
                     <?php if(!empty($_SESSION['error'])): ?>
                     <p class="error"><?php echo $_SESSION['error']; ?></p>
-                    <?php 
+                    <?php
                         $_SESSION['error']="";
                         endif;
                      ?>

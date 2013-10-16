@@ -47,7 +47,7 @@ if(!empty($_REQUEST['tweet'])){
         $valid=false;
     }
     if($valid){
-        $sql = "INSERT INTO `twitterlike`.`tweet` (`id`, `username`, `tglwaktu`, `isi`) VALUES (NULL, '$username', NOW(), '$isi')";
+        $sql = "INSERT INTO `tweet` (`id`, `username`, `tglwaktu`, `isi`) VALUES (NULL, '$username', NOW(), '$isi')";
         $hasil=mysql_query($sql);
         if (!$hasil) {
             $pesan  = 'Invalid query: ' . mysql_error() . "\n";
@@ -137,7 +137,7 @@ if($username!=""){
                         <div id="posting">
                             <?php if(!empty($_SESSION['error'])): ?>
                             <p class="error"><?php echo $_SESSION['error']; ?></p>
-                            <?php 
+                            <?php
                                 $_SESSION['error']="";
                                 endif;
                              ?>
@@ -197,7 +197,7 @@ if($username!=""){
                             <a href="home.php?id=<?php echo $id;?>"><img src="images/mini-<?php echo $gambar;?>" width="24" height="24" /></a>
                         <?php endforeach; ?>
                         </div>
-                        
+
                         <div class="daftaricon round">
                         <p>Mengikuti</p>
                         <?php foreach($listfollowing as $id => $gambar): ?>
@@ -221,9 +221,9 @@ if($username!=""){
                 batasKar=140,
                 urlGambar=$('#infouser > img').attr('src'),
                 daftartweet=$('#daftartweet');
-                
+
             tmbkirim.attr("disabled","disabled");
-            
+
             isi.keyup(function(){
                 var selisih;
                 console.log("isi = "+isi.val().length);
@@ -242,7 +242,7 @@ if($username!=""){
             },function(){
                 tmbkirim.removeClass('tombolhover');
             });
-            
+
             tmbkirim.click(function(){
                 $.ajax({
                     url:"home.php",
@@ -254,7 +254,7 @@ if($username!=""){
                     },
                     success:function(data){
                         var berhasil,nama,isi,tgl,responXML;
-                        
+
                         responXML=$('tweet',data);
                         berhasil=responXML.find('status').text();
                         if(berhasil=='berhasil'){

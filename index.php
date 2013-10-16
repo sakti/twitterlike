@@ -1,7 +1,7 @@
 <?php
 require_once("inc/auth.php");
 require_once("inc/connection.php");
-cekAuth("tamu");
+cekAuth("pindah");
 function getNewestTweet(){
     $sql="SELECT tw.id,tw.username,DATE_FORMAT(tw.tglwaktu,'%h:%i %p, %e %b %Y') tgl,tw.isi,u.image FROM tweet tw, user u where u.username=tw.username ORDER BY tglwaktu DESC LIMIT 15";
     $hasil=query($sql);
